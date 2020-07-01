@@ -1,30 +1,41 @@
 import React from 'react';
+import CountDownPeriod from './CountDownPeriod.js'
+
+const timeNow = new Date();
 
 class Task extends React.Component {
   constructor(props) {
     super(props);
+    // TODO:
+    // let timeStart = new Date() + this.props.totalPeriodBefore;
+    console.log("in a single task totalPeriodSoFar: ", this.props.totalPeriodSoFar);
     this.state = {
-      countDown: null,
-      timeStart: null,
-      timeEnd: null
+      countDownPeriod: this.props.period,
+      timeStart: this.getCalculatedTime(this.props.totalPeriodSoFar - this.props.period),
+      timeEnd: this.getCalculatedTime(this.props.totalPeriodSoFar)
     }
+  }
+
+  getCalculatedTime(period) {
+    let newTime = new Date(timeNow.getTime() + period*60000);
+    let hours = `${newTime.getHours()}`;
+    let mins = `${newTime.getMinutes()}`;
+
+    hours.length === 1 ? hours = '0' + hours : null;
+    mins.length === 1 ? mins = '0' + mins : null;
+    return hours + ':' + mins;
   }
 
   componentDidMount () {
-    // get current time, count this.state timeStart and timeEnd
-    this.countDown();
+    // setTimeout(this.countDown(), this.props.totalPeriodBefore);
+    // this.countDown();
   }
 
-  countDown () {
+  countDown (period) {
     const that = this;
-    for(let i = 1; i <= this.props.period; i++) {
-      setTimeout(function() {
-        that.setState({
-          countDown: i
-        });
-        console.log(i);
-      }, 1000*i);
-    }
+    setInterval(function(){
+
+    }, this.state.countDownPeriod);
   }
 
   onClick (e) {
@@ -43,17 +54,19 @@ class Task extends React.Component {
   }
 
   render() {
+    // TODO: time-start-end has to be input? type = "time"
+
+    console.log("current timeStart: ", this.state.timeStart);
+    console.log("current timeEnd: ", this.state.timeEnd);
     return (
-      <div className="grid-container">
-        <div className="task-count"></div>
-        <input className="task-description" type="text" value={this.props.task} onChange="this.changeTaskDescription.bind(this)" onClick={this.onClick.bind(this)} enabled></input>
-        <div className="task-time">
-          <input className="task-period" value={this.state.countDown} disabled></input>
-          <div className="container-time">
-            <input className="time-start" type="time" value={this.state.timeStart} disabled></input>
-            <input className="time-end" type="time" value={this.state.timeEnd} disabled></input>
-          </div>
+      <div className="container-task">
+        <div className="task-time-container">
+          <input type="time" className="time-start" value={this.state.timeStart} disabled ></input>
+          <input type="time" className="time-end" value={this.state.timeEnd} ></input>
+          <CountDownPeriod period={this.props.period} totalPeriodSoFar={this.props.totalPeriodSoFar}/>
+          <button>Delete</button>
         </div>
+        <input className="task-description" type="text" value={this.props.task} onChange="this.changeTaskDescription.bind(this)" onClick={this.onClick.bind(this)} required></input>
       </div>
     )
   }

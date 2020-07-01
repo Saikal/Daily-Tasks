@@ -1,14 +1,20 @@
 import React from 'react';
 import Task from './Task.js';
 
+let totalPeriodSoFar = 0;
+
 class Tasks extends React.Component {
   render() {
-    let totalPeriodBefore = 0;
-    // add this: {totalPeriodBefore = totalPeriodBefore + task['period']} in the .map()
+    // add this: {totalPeriodSoFar = totalPeriodSoFar + task['period']} in the .map()
     return (
-      <div>
-        {
-          this.props.tasks.map((task, index) => <Task tasks={this.props.tasks} task={task['task']} key={index} period={task['period']} totalPeriodBefore={totalPeriodBefore} />)
+      <div className="container-tasks">
+        { 
+          (() => {
+            return this.props.tasks.map((task, index) => {
+              totalPeriodSoFar = totalPeriodSoFar + task['period'];
+              return (<Task tasks={this.props.tasks} task={task['task']} key={index} period={task['period']} totalPeriodSoFar={totalPeriodSoFar} />)
+            })
+          })()
         }
       </div>
     )

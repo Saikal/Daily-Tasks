@@ -32,7 +32,33 @@ class App extends Component {
         },
         {
           'task' : 'Watch React states, props, constructor super in Youtube',
-          'period' : 30
+          'period' : 25
+        }
+      ],
+      test: [
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
+        }, 
+        {
+          'task' : null,
+          'period' : null
+        },  
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
         }
       ],
       startTime: ''
@@ -54,6 +80,7 @@ class App extends Component {
     return (
       <div id="tasks">
         <h1>Daily Tasks</h1>
+        <button>Set Time</button>
         <Tasks tasks={this.state.tasks} changeTaskDescription={this.changeTaskDescription.bind(this)} />
       </div>
     )
@@ -61,3 +88,62 @@ class App extends Component {
 }
 
 export default App;
+
+/* 
+      tasks: [
+        {
+          'task' : 'Read 10 pages of the book',
+          'period' : 30
+        },
+        {
+          'task' : 'Walking in the park - Meditations',
+          'period' : 40
+        }, 
+        {
+          'task' : 'Finish styling for a Grid component in the App',
+          'period' : 20
+        },  
+        {
+          'task' : 'Youtube videos about CSS Tricks',
+          'period' : 20
+        },
+        {
+          'task' : 'Get ready for a business phone chat scheduled',
+          'period' : 15
+        },
+        {
+          'task' : 'Watch React states, props, constructor super in Youtube',
+          'period' : 25
+        }
+      ],
+
+*/
+
+/*
+      test: [
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
+        }, 
+        {
+          'task' : null,
+          'period' : null
+        },  
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
+        },
+        {
+          'task' : null,
+          'period' : null
+        }
+      ],
+*/

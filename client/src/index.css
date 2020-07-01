@@ -4,8 +4,23 @@ body {
   font-family: sans-serif;
 }
 
+#tasks {
+  text-align: center;
+  padding: 10px;
+}
+
+.container-tasks {
+  padding: 0 5px;
+}
+
+.container-task {
+  margin: 25px auto;
+}
+
 input {
+  font-size: 0.8em;
   padding: 5px 10px; 
+  width: 100%;
 }
 
 input[type="text"]:disabled {
@@ -16,7 +31,17 @@ input[type="text"]:enabled {
   background: #ccf5ff;
 }
 
-.grid-container {
+button {
+  font-size: 0.6em;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.task-time-container {
   display: grid;
-  grid-template-columns: 5% 65% 30%;
+  grid-template-columns: 32% 32% 22% 14%;
+  margin: 5px 0px;
 }

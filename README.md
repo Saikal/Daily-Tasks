@@ -1,6 +1,47 @@
-# Rando
+# Daily Tasks Planner
 
-A password generator built with React and Express.
+### Using NPM
+
+Run App locally. 
+Clone Repo and follow instructions below to Start the App
+
+Start Backend:
+
+1. `cd daily-task`
+2. `npm install`
+3. `npm start`
+
+Start Frontend:
+
+1. `cd daily-task/client`
+2. `npm install`
+3. `npm start`
+
+
+## Run Tests
+
+Backend Test:
+
+1. `cd daily-task`
+2. `npm test server/test.js`
+
+Frontend Test:
+
+1. `cd daily-task/client`
+2. `npm test`
+
+
+### Tech Stack Used:
+
+React.js
+
+Express.js
+
+Axios
+
+Postgresql 
+
+and other
 
 This is a minimal demo of using Create React App to bootstrap a React project, connect the React app to an Express backend, and deploy the whole thing to Heroku.
 
