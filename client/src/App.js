@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+
 import Tasks from './components/Tasks.js';
 
 import './App.css';
@@ -76,11 +78,28 @@ class App extends Component {
     });
   }
 
+  initialSetTasksPeriods () {
+    let tasks = [];
+    // TODO: optimize!
+    Array.from(ReactDOM.findDOMNode(this).getElementsByClassName("task-description")).forEach(function(elem, index) {
+      console.log("button clicked: ", elem.value);
+      tasks[index]['task'] = elem.value;
+    });
+    Array.from(ReactDOM.findDOMNode(this).getElementsByClassName("task-description")).forEach(function(elem, index) {
+      // elem.style.pointerEvents = 'auto'
+      console.log("button clicked: ", elem.value);
+      tasks[index]['period'] = elem.value;
+    });
+    this.setState({
+      tasks: tasks
+    })
+  }
+
   render() {
     return (
       <div id="tasks">
         <h1>Daily Tasks</h1>
-        <button>Set Time</button>
+        <button onClick={this.initialSetTasksPeriods.bind(this)} >Set Time</button>
         <Tasks tasks={this.state.tasks} changeTaskDescription={this.changeTaskDescription.bind(this)} />
       </div>
     )
